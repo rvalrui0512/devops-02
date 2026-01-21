@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, 
 from datetime import datetime
 import locale
 
@@ -12,7 +12,7 @@ def homepage():
     the_time = datetime.now().strftime("%A, %d %b %Y %H:%M")
 
     # Render HTML with variable
-    return render_template("index.html", the_time=the_time, tema="dog", 
+    return render_template("index.html", the_time=the_time, tema="cat", 
                            alto="600", ancho="920")
 
 @app.route('/status')
