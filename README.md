@@ -259,3 +259,9 @@ jobs:
     Hacemos commit y push a la rama main.
     Verificamos en Actions que se ejecutan correctamente los jobs build y aws.
     Accedemos a la IP pública o hostname de tu instancia EC2 en el navegador y comprueba que los cambios están desplegados.
+
+
+<img width="1033" height="430" alt="Screenshot from 2026-02-01 15-42-29" src="https://github.com/user-attachments/assets/3b13d5c8-c559-42e1-b797-03297f64fa90" />
+
+
+    
