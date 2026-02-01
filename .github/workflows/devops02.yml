@@ -30,3 +30,31 @@ jobs:
           context: .
           push: true 
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/galeria:latest
+  aws:
+    name: Deploy image to aws
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    # 1
+    - name: copy docker compose via ssh key  
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.AWS_HOSTNAME }}
+        username: ${{ secrets.AWS_USERNAME }}
+        port: 22 # ${{ secrets.PORT }}
+        key: ${{ secrets.AWS_PRIVATEKEY }}
+        source: "docker-compose.yml"
+        target: /home/admin
+    # 2
+    - name: script deploy docker services 
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.AWS_HOSTNAME }}
+        username: ${{ secrets.AWS_USERNAME }}
+        key: ${{ secrets.AWS_PRIVATEKEY }}
+        port: 22  # ${{ secrets.PORT }}
+        script: |
+            sleep 60
+            docker compose down --rmi all
+            docker compose up -d
