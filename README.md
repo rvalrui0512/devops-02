@@ -202,11 +202,11 @@ Este job:
     Modificamos un archivo dentro de src (por ejemplo, index.html).
     Hacemos commit y push de esa rama.
     Abrimos un Pull Request hacia main (si se usa PR).
-    Revisamos la pestaña Actions y confirma que el job build termina correctamente y que hay una nueva imagen en DockerHub.[web:5]
+    Revisamos la pestaña Actions y confirma que el job build termina correctamente y que hay una nueva imagen en DockerHub.
 
 # 9. Despliegue en AWS EC2 con GitHub Actions
 
-Para automatizar el despliegue en AWS EC2, se añade un segundo job que solo se ejecuta si el job build ha sido exitoso (needs: build).[web:10]
+Para automatizar el despliegue en AWS EC2, se añade un segundo job que solo se ejecuta si el job build ha sido exitoso (needs: build).
 
 Este job:
     Copia el archivo docker-compose.yml a la instancia EC2.
